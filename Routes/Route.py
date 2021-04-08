@@ -6,9 +6,11 @@ app = Flask(__name__)
 def index():
     return 'Hola muno!'
 
+@app.route('/parameter/')
 @app.route('/parameter/<name>/')
-def parameter(name):
-    return 'Hola ( {}'.format(name) + ' ) como se encuentra hoy?'
+@app.route('/parameter/<name>/<last_name>/')
+def parameter(name = 'ROOT', last_name = ' '):
+    return 'Hola ( {} {}'.format(name , last_name) + ' ) como se encuentra hoy?'
 
 if __name__ == '__main__':
     app.run(debug = True , port = 5001)
